@@ -13,8 +13,8 @@ public class RobotMap {
     public static final String RIGHT_FRONT_MOTOR = "right_front_drive";
     public static final String LEFT_BACK_MOTOR = "left_back_drive";
     public static final String RIGHT_BACK_MOTOR = "right_back_drive";
-    public static final DcMotor.Direction LEFT_DRIVE_DIRECTION = DcMotor.Direction.REVERSE;
-    public static final DcMotor.Direction RIGHT_DRIVE_DIRECTION = DcMotor.Direction.FORWARD;
+    public static final DcMotor.Direction LEFT_DRIVE_DIRECTION = DcMotor.Direction.FORWARD;
+    public static final DcMotor.Direction RIGHT_DRIVE_DIRECTION = DcMotor.Direction.REVERSE;
     public static final int REVERSE_DRIVETRAIN_ENCODER_VALUE = -1;
     public static final double GYRO_CORRECTION_kP = .0375;
 
