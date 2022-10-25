@@ -37,16 +37,16 @@ public class RobotMap {
 
 
     // ELevator Parameters
-    public static final int BOTTOM_MID_HEIGHT = 2200;
-    public static final int DUCK_HEIGHT = 2600;
-    public static final int ELEVATOR_DIFF = 3980;
-    public static final String ELEVATOR_MOTOR = "elevator_motor";
-    public static final DcMotor.Direction ELEVATOR_DIRECTION = DcMotor.Direction.REVERSE;
-    public static final double REVERSE_JOYSTICK_DIRECTION = -1.0;
-    public static final double ELEVATOR_SPEED = 0.6;
-    public static final double ELEVATOR_SPEED_DOWN = 0.1;
-    public static final int REVERSE_ELEVATOR_ENCODER_VALUE = 1;
-    public static final double ELEVATOR_KP = 0.01;
+    public static final int FULL_HEIGHT = 2200;
+    public static final int GRAB_HEIGHT = 2600;
+    public static final int ARM_DIFF = 3980;
+    public static final String ARM_MOTOR = "elevator_motor";
+    public static final DcMotor.Direction ARM_DIRECTION = DcMotor.Direction.REVERSE;
+    public static final double REVERSE_JOYSTICK_DIRECTION = 1.0;
+    public static final double ARM_SPEED = 0.6;
+    public static final double ARM_SPEED_DOWN = 0.6;
+    public static final int REVERSE_ARM_ENCODER_VALUE = 1;
+    public static final double ARM_KP = 0.01;
 
     //Webcam Parameters
     public static final String WEBCAM = "webcam";

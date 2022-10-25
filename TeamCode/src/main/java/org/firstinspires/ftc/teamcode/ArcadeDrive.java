@@ -45,6 +45,7 @@ public class ArcadeDrive extends OpMode
 {
     private ElapsedTime runtime = new ElapsedTime();
     private DriveTrain drivetrain;
+    private ArmMotor armMotor;
 
 
     /*
@@ -54,6 +55,7 @@ public class ArcadeDrive extends OpMode
     public void init() {
 
         drivetrain = new DriveTrain(hardwareMap, telemetry);
+        armMotor= new ArmMotor(hardwareMap, telemetry);
     }
 
     /*
@@ -84,6 +86,7 @@ public class ArcadeDrive extends OpMode
         else {
             drivetrain.arcadeDrive(gamepad1);
         }
+        armMotor.manual(gamepad2);
 
 
 
