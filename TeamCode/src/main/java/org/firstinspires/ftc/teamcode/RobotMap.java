@@ -30,8 +30,8 @@ public class RobotMap {
 
     // Claw Parameters
     public static final String CLAW_SERVO = "claw_motor";
-    public static final double SERVO_OPEN = 0.55;
-    public static final double SERVO_CLOSED = 0.22;
+    public static final double SERVO_OPEN = 1.0;
+    public static final double SERVO_CLOSED = 0.0;
     public static final double MINIMUM_SERVO_POSITION = 0.0;
     public static final double MAXIMUM_SERVO_POSITION = 1.0;
     public static final double SERVO_ANGLE_DEFAULT = SERVO_CLOSED;
@@ -44,7 +44,7 @@ public class RobotMap {
     public static final String ARM_MOTOR = "elevator_motor";
     public static final DcMotor.Direction ARM_DIRECTION = DcMotor.Direction.REVERSE;
     public static final double REVERSE_JOYSTICK_DIRECTION = 1.0;
-    public static final double ARM_SPEED = 0.6;
+    public static final double ARM_SPEED = 0.4;
     public static final double ARM_SPEED_DOWN = 0.6;
     public static final int REVERSE_ARM_ENCODER_VALUE = 1;
     public static final double ARM_KP = 0.01;

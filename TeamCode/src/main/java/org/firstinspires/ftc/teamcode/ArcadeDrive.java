@@ -46,6 +46,7 @@ public class ArcadeDrive extends OpMode
     private ElapsedTime runtime = new ElapsedTime();
     private DriveTrain drivetrain;
     private ArmMotor armMotor;
+    private Claw claw;
 
 
     /*
@@ -56,6 +57,7 @@ public class ArcadeDrive extends OpMode
 
         drivetrain = new DriveTrain(hardwareMap, telemetry);
         armMotor= new ArmMotor(hardwareMap, telemetry);
+        claw = new Claw(hardwareMap, telemetry);
     }
 
     /*
@@ -87,6 +89,7 @@ public class ArcadeDrive extends OpMode
             drivetrain.arcadeDrive(gamepad1);
         }
         armMotor.manual(gamepad2);
+        claw.buttonServo(gamepad2);
 
 
 
