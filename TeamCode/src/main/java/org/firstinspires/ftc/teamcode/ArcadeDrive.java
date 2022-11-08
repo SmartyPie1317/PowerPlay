@@ -47,6 +47,7 @@ public class ArcadeDrive extends OpMode
     private DriveTrain drivetrain;
     private ArmMotor armMotor;
     private Claw claw;
+    private WinchMotor winchMotor;
 
 
     /*
@@ -58,6 +59,7 @@ public class ArcadeDrive extends OpMode
         drivetrain = new DriveTrain(hardwareMap, telemetry);
         armMotor= new ArmMotor(hardwareMap, telemetry);
         claw = new Claw(hardwareMap, telemetry);
+        winchMotor = new WinchMotor(hardwareMap, telemetry);
     }
 
     /*
@@ -90,6 +92,7 @@ public class ArcadeDrive extends OpMode
         }
         armMotor.manual(gamepad2);
         claw.buttonServo(gamepad2);
+        winchMotor.manual(gamepad2);
 
 
 

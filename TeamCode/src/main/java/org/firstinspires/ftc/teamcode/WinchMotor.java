@@ -9,7 +9,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 /**
  * Class for controlling the Arm of an FTC robot.
  */
-public class ArmMotor {
+public class WinchMotor {
 
     // Class variables
     int encoderGoal;
@@ -25,14 +25,14 @@ public class ArmMotor {
      * @param hardwareMap the robot instance of the hardware map
      * @param telemetry the robot instance of the telemetry object
      */
-    public ArmMotor(HardwareMap hardwareMap, Telemetry telemetry) {
+    public WinchMotor(HardwareMap hardwareMap, Telemetry telemetry) {
         this.telemetry = telemetry;
 
         // Assign hardware objects
-        motor = hardwareMap.get(DcMotor.class, RobotMap.ARM_MOTOR);
+        motor = hardwareMap.get(DcMotor.class, RobotMap.WINCH_MOTOR);
 
         // Set the motor directions
-        motor.setDirection(RobotMap.ARM_DIRECTION);
+        motor.setDirection(RobotMap.WINCH_DIRECTION);
 
         //Set the encoder starting position
         startEncoder = motor.getCurrentPosition();
@@ -47,21 +47,20 @@ public class ArmMotor {
      */
     public void manual(Gamepad gamepad) {
 
-        manual(gamepad.left_stick_y, gamepad.y, gamepad.x);
+        manual(gamepad.right_stick_y, gamepad.y, gamepad.x);
     }
     public void manual() {
         manual(0, false, false);
     }
-    public void manual(double leftStick, Boolean yButton, Boolean xButton){
+    public void manual(double rightStick, Boolean yButton, Boolean xButton){
         double power;
-        double encoderMax = startEncoder + RobotMap.ARM_DIFF;
+        double encoderMax = startEncoder + RobotMap.WINCH_DIFF;
         int encoderValue = getEncoder();
-        double speedLimit = RobotMap.ARM_SPEED;
-        double speedLimitDown = RobotMap.ARM_SPEED_DOWN;
+        double speedLimit = RobotMap.WINCH_SPEED;
 
         // greater than and less than signs may need to be switched
 
-        power = leftStick * RobotMap.REVERSE_JOYSTICK_DIRECTION;
+        power = rightStick * RobotMap.REVERSE_JOYSTICK_DIRECTION;
 /*
         if(encoderValue >= encoderMax && power > 0){
             power = 0;
@@ -86,24 +85,21 @@ public class ArmMotor {
         }
 */
         // Limit speed of arm
-        if(power < 0) {
-            power *= speedLimitDown;
-        }
-        else {
+
             power *= speedLimit;
-        }
 
 
         setPower(power);
 
         //output the encoder value//
         if (RobotMap.DISPLAY_ENCODER_VALUES) {
-            telemetry.addData("Arm Encoder", getEncoder());
+            telemetry.addData("Winch Encoder", getEncoder());
         }
 
 
 
     }
+
 
     private void setPower(double power){
         // Make sure power levels are within expected range
@@ -121,7 +117,7 @@ public class ArmMotor {
     }
 
     public int getEncoder () {
-        return RobotMap.REVERSE_ARM_ENCODER_VALUE * (motor.getCurrentPosition() - startEncoder);
+        return RobotMap.REVERSE_WINCH_ENCODER_VALUE * (motor.getCurrentPosition() - startEncoder);
     }
     public void zeroEncoder() {
         startEncoder = motor.getCurrentPosition();
