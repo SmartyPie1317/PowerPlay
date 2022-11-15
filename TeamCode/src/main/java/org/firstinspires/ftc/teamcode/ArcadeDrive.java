@@ -95,7 +95,6 @@ public class ArcadeDrive extends OpMode
         claw.buttonServo(gamepad2);
 
 
-
         // Show the elapsed game time.
         if (RobotMap.DISPLAY_TIME) {
             telemetry.addData("Status", "Run Time: " + runtime.toString());
