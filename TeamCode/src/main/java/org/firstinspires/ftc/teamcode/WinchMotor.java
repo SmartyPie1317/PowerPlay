@@ -16,6 +16,7 @@ public class WinchMotor {
     DcMotor motor;
     Telemetry telemetry;
     int startEncoder;
+    double movement;
 
 
 

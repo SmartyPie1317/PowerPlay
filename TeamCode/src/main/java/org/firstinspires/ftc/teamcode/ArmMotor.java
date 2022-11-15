@@ -16,6 +16,8 @@ public class ArmMotor {
     DcMotor motor;
     Telemetry telemetry;
     int startEncoder;
+    boolean both;
+    double movement;
 
 
 
@@ -37,6 +39,7 @@ public class ArmMotor {
         //Set the encoder starting position
         startEncoder = motor.getCurrentPosition();
         zeroEncoder();
+        encoderGoal = motor.getCurrentPosition()*RobotMap.REVERSE_ARM_ENCODER_VALUE;
     }
 
 
@@ -45,14 +48,12 @@ public class ArmMotor {
      *
      * @param gamepad The gamepad from which to read joystick values
      */
-    public void manual(Gamepad gamepad) {
+    public void manual(Gamepad gamepad, WinchMotor winchMotor) {
 
-        manual(gamepad.left_stick_y, gamepad.y, gamepad.x);
+        manual(gamepad.left_stick_y, gamepad.y, gamepad.x, gamepad.left_bumper, gamepad.right_bumper, winchMotor);
     }
-    public void manual() {
-        manual(0, false, false);
-    }
-    public void manual(double leftStick, Boolean yButton, Boolean xButton){
+    public void manual(double leftStick, Boolean yButton, Boolean xButton,Boolean leftBumper,
+                       Boolean rightBumper, WinchMotor winchMotor){
         double power;
         double encoderMax = startEncoder + RobotMap.ARM_DIFF;
         int encoderValue = getEncoder();
@@ -76,7 +77,8 @@ public class ArmMotor {
         else if(xButton){
             encoderGoal = startEncoder + RobotMap.GRAB_HEIGHT;
         }
-
+*/
+/*
         if (Math.abs(power) < RobotMap.DEADZONE) { //when u DON'T TOUCH THE JOySTICK
             double error = encoderGoal - encoderValue;
             power = RobotMap.ARM_KP * error;
@@ -84,7 +86,9 @@ public class ArmMotor {
         else { //This happens when you TOUCH THE JOYSTICK
             encoderGoal = encoderValue;
         }
-*/
+        */
+
+
         // Limit speed of arm
         if(power < 0) {
             power *= speedLimitDown;
@@ -98,10 +102,23 @@ public class ArmMotor {
 
         //output the encoder value//
         if (RobotMap.DISPLAY_ENCODER_VALUES) {
-            telemetry.addData("Arm Encoder", getEncoder());
+            telemetry.addData("Arm Encoder", encoderValue);
+            telemetry.addData("Encoder Goal", encoderGoal);
+        }
+/*
+        if (leftBumper) {
+            both = false;
+
+        } else if (rightBumper) {
+            both = true;
         }
 
-
+        //experimental with moving both
+        if(both){
+            movement = leftStick * RobotMap.WINCHBOTHMATH;
+            winchMotor.manual(movement, false, false);
+        }
+*/
 
     }
 
@@ -121,7 +138,8 @@ public class ArmMotor {
     }
 
     public int getEncoder () {
-        return RobotMap.REVERSE_ARM_ENCODER_VALUE * (motor.getCurrentPosition() - startEncoder);
+        return RobotMap.REVERSE_ARM_ENCODER_VALUE * (motor.getCurrentPosition());
+        //return RobotMap.REVERSE_ARM_ENCODER_VALUE * (motor.getCurrentPosition() - startEncoder);
     }
     public void zeroEncoder() {
         startEncoder = motor.getCurrentPosition();

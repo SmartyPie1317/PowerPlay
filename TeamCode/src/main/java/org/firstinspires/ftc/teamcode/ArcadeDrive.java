@@ -90,9 +90,9 @@ public class ArcadeDrive extends OpMode
         else {
             drivetrain.arcadeDrive(gamepad1);
         }
-        armMotor.manual(gamepad2);
-        claw.buttonServo(gamepad2);
         winchMotor.manual(gamepad2);
+        armMotor.manual(gamepad2, winchMotor);
+        claw.buttonServo(gamepad2);
 
 
 
