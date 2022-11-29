@@ -78,15 +78,15 @@ public class ArmMotor {
             encoderGoal = startEncoder + RobotMap.GRAB_HEIGHT;
         }
 */
-/*
+
         if (Math.abs(power) < RobotMap.DEADZONE) { //when u DON'T TOUCH THE JOySTICK
-            double error = encoderGoal - encoderValue;
-            power = RobotMap.ARM_KP * error;
+            double error = (encoderGoal - encoderValue);
+            power = (RobotMap.ARM_KP * error);
         }
         else { //This happens when you TOUCH THE JOYSTICK
             encoderGoal = encoderValue;
         }
-        */
+
 
 
         // Limit speed of arm
@@ -104,6 +104,7 @@ public class ArmMotor {
         if (RobotMap.DISPLAY_ENCODER_VALUES) {
             telemetry.addData("Arm Encoder", encoderValue);
             telemetry.addData("Encoder Goal", encoderGoal);
+            telemetry.addData("Power", power);
         }
 /*
         if (leftBumper) {
