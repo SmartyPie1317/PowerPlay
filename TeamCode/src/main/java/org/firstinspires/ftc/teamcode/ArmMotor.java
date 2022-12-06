@@ -12,7 +12,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 public class ArmMotor {
 
     // Class variables
-    int encoderGoal;
+    double encoderGoal;
     DcMotor motor;
     Telemetry telemetry;
     int startEncoder;
@@ -50,10 +50,10 @@ public class ArmMotor {
      */
     public void manual(Gamepad gamepad, WinchMotor winchMotor) {
 
-        manual(gamepad.left_stick_y, gamepad.y, gamepad.x, gamepad.left_bumper, gamepad.right_bumper, winchMotor);
+        manual(gamepad.left_stick_y, gamepad.y, gamepad.x, gamepad.left_bumper, gamepad.right_bumper);
     }
     public void manual(double leftStick, Boolean yButton, Boolean xButton,Boolean leftBumper,
-                       Boolean rightBumper, WinchMotor winchMotor){
+                       Boolean rightBumper){
         double power;
         double encoderMax = startEncoder + RobotMap.ARM_DIFF;
         int encoderValue = getEncoder();
@@ -77,15 +77,18 @@ public class ArmMotor {
         else if(xButton){
             encoderGoal = startEncoder + RobotMap.GRAB_HEIGHT;
         }
+
 */
 
         if (Math.abs(power) < RobotMap.DEADZONE) { //when u DON'T TOUCH THE JOySTICK
-            double error = (encoderGoal - encoderValue);
-            power = (RobotMap.ARM_KP * error);
+
         }
         else { //This happens when you TOUCH THE JOYSTICK
-            encoderGoal = encoderValue;
+            //encoderGoal = encoderValue;
+            encoderGoal += (power * RobotMap.CLICKS);
         }
+        double error = (encoderGoal - encoderValue);
+        power = (RobotMap.ARM_KP * error);
 
 
 
@@ -121,6 +124,10 @@ public class ArmMotor {
         }
 */
 
+    }
+
+    public void setEncoderGoal(double inputGoal){
+        encoderGoal = inputGoal;
     }
 
     private void setPower(double power){

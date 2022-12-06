@@ -47,8 +47,9 @@ public class RobotMap {
     public static final double ARM_SPEED = 0.75;
     public static final double ARM_SPEED_DOWN = 0.75;
     public static final int REVERSE_ARM_ENCODER_VALUE = 1;
-    public static final double ARM_KP = 0.02;
+    public static final double ARM_KP = 0.07;
     public static final double WINCHBOTHMATH = 0.2;
+    public static final double CLICKS = 0.5;
 
     //Winch Parameters
     public static final String WINCH_MOTOR = "winch_motor";
