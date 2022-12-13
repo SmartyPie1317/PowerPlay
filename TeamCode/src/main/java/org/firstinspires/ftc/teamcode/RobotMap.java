@@ -6,7 +6,7 @@ public class RobotMap {
 
     // Robot Parameters
     public static final Boolean DISPLAY_TIME = true;
-    public static final double DEADZONE = 0.0005;
+    public static final double DEADZONE = 0.005;
 
     // Drivetrain Parameters
     public static final String LEFT_FRONT_MOTOR = "left_front_drive";
@@ -47,9 +47,9 @@ public class RobotMap {
     public static final double ARM_SPEED = 0.75;
     public static final double ARM_SPEED_DOWN = 0.75;
     public static final int REVERSE_ARM_ENCODER_VALUE = 1;
-    public static final double ARM_KP = 0.07;
+    public static final double ARM_KP = 0.03;
     public static final double WINCHBOTHMATH = 0.2;
-    public static final double CLICKS = 0.5;
+    public static final double CLICKS = 3.0;
 
     //Winch Parameters
     public static final String WINCH_MOTOR = "winch_motor";
