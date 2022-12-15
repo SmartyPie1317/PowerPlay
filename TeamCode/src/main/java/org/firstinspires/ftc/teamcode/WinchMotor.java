@@ -76,10 +76,11 @@ public class WinchMotor {
         else if(xButton){
             encoderGoal = startEncoder + RobotMap.GRAB_HEIGHT;
         }
-
+*/
+        /*
         if (Math.abs(power) < RobotMap.DEADZONE) { //when u DON'T TOUCH THE JOySTICK
             double error = encoderGoal - encoderValue;
-            power = RobotMap.ARM_KP * error;
+            power = RobotMap.WINCH_KP * error;
         }
         else { //This happens when you TOUCH THE JOYSTICK
             encoderGoal = encoderValue;
@@ -94,7 +95,10 @@ public class WinchMotor {
 
         //output the encoder value//
         if (RobotMap.DISPLAY_ENCODER_VALUES) {
-            telemetry.addData("Winch Encoder", getEncoder());
+            //telemetry.addData("Winch Encoder", getEncoder());
+            //telemetry.addData("Winch Encoder", encoderValue);
+            //telemetry.addData("Winch Encoder Goal", encoderGoal);
+            //telemetry.addData("Winch Power", power);
         }
 
 

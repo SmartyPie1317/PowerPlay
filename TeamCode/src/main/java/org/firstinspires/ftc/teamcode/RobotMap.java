@@ -47,9 +47,11 @@ public class RobotMap {
     public static final double ARM_SPEED = 0.75;
     public static final double ARM_SPEED_DOWN = 0.75;
     public static final int REVERSE_ARM_ENCODER_VALUE = 1;
-    public static final double ARM_KP = 0.03;
+    public static final double ARM_KP = 0.04;
     public static final double WINCHBOTHMATH = 0.2;
-    public static final double CLICKS = 3.0;
+    public static final double CLICKS = 1.5;
+    public static final double ERROR_MAX = 15;
+    public static final double BOOST = .5;
 
     //Winch Parameters
     public static final String WINCH_MOTOR = "winch_motor";
@@ -57,6 +59,7 @@ public class RobotMap {
     public static final double WINCH_SPEED = 0.99;
     public static final int REVERSE_WINCH_ENCODER_VALUE = 1;
     public static final int WINCH_DIFF = 3980;
+    public static final double WINCH_KP = 0.05;
 
     //Webcam Parameters
     public static final String WEBCAM = "webcam";

@@ -57,6 +57,9 @@ public class ArmMotor {
         double power;
         double encoderMax = startEncoder + RobotMap.ARM_DIFF;
         int encoderValue = getEncoder();
+        if(xButton){
+            encoderGoal = encoderValue;
+        }
         double speedLimit = RobotMap.ARM_SPEED;
         double speedLimitDown = RobotMap.ARM_SPEED_DOWN;
 
@@ -88,7 +91,12 @@ public class ArmMotor {
             encoderGoal += (power * RobotMap.CLICKS);
         }
         double error = (encoderGoal - encoderValue);
+        //telemetry.addData("Error Before", error);
+        error = (Math.min(Math.abs(error), RobotMap.ERROR_MAX)) * Math.signum(error);
+        //telemetry.addData("After Error", error);
         power = (RobotMap.ARM_KP * error);
+
+
 
 
 
@@ -98,6 +106,10 @@ public class ArmMotor {
         }
         else {
             power *= speedLimit;
+        }
+
+        if (yButton) {
+            power += Math.signum(power) * RobotMap.BOOST;
         }
 
 
