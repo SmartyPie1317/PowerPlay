@@ -51,10 +51,19 @@ public class AutonStages {
             stage = 10;
         } else if (stage == 10) {
             //strafe
-            driveTrainGoal = driveTrainEncoder + 1750;
-            drivetrain.arcadeDrive(0, 0.5, 0, false, true);
-            //rotate, forward/back, strafe
-            expirationTime = runtime.time() + 2.0;
+           if (color == Color.BLUE) {
+               driveTrainGoal = driveTrainEncoder + 1750;
+               drivetrain.arcadeDrive(0, 0, 0.5, false, true);
+               //rotate, forward/back, strafe
+               expirationTime = runtime.time() + 3.0;
+           }
+            if (color == Color.RED) {
+                driveTrainGoal = driveTrainEncoder + 1750;
+                drivetrain.arcadeDrive(0, 0, -0.5, false, true);
+                //rotate, forward/back, strafe
+                expirationTime = runtime.time() + 3.0;
+            }
+            //SHAWTY
             stage = 20;
         } else if (stage == 20) {
             //stop
