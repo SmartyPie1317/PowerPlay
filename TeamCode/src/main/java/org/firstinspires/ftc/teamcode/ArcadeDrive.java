@@ -45,7 +45,7 @@ public class ArcadeDrive extends OpMode
 {
     private ElapsedTime runtime = new ElapsedTime();
     private DriveTrain drivetrain;
-    private ArmMotor armMotor;
+    private Wrist wrist;
     private Claw claw;
     private WinchMotor winchMotor;
 
@@ -57,8 +57,8 @@ public class ArcadeDrive extends OpMode
     public void init() {
 
         drivetrain = new DriveTrain(hardwareMap, telemetry);
-        armMotor= new ArmMotor(hardwareMap, telemetry);
         claw = new Claw(hardwareMap, telemetry);
+        wrist = new Wrist(hardwareMap, telemetry);
         winchMotor = new WinchMotor(hardwareMap, telemetry);
     }
 
@@ -91,8 +91,8 @@ public class ArcadeDrive extends OpMode
             drivetrain.arcadeDrive(gamepad1);
         }
         winchMotor.manual(gamepad2);
-        armMotor.manual(gamepad2, winchMotor);
         claw.buttonServo(gamepad2);
+        wrist.buttonServo(gamepad2);
 
 
         // Show the elapsed game time.

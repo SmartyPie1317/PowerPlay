@@ -15,8 +15,8 @@ public class AutonStages {
     Side side;
 
     private DriveTrain drivetrain;
-    private ArmMotor arm;
     private Claw claw;
+    private Wrist wrist;
     private Telemetry telemetry;
     private int stage = 0;
     private double expirationTime;
@@ -32,15 +32,12 @@ public class AutonStages {
         this.runtime = runtime;
         this.telemetry = telemetry;
         drivetrain = new DriveTrain(hardwareMap, telemetry);
-        arm = new ArmMotor(hardwareMap, telemetry);
         claw = new Claw(hardwareMap, telemetry);
     }
 
     public void mainStages() {
-        arm.manual(0, false, false, false, false);
         int driveEncoderRight = drivetrain.getEncoderRight();
         int driveEncoderLeft = drivetrain.getEncoderLeft();
-        int armEncoder = arm.getEncoder();
         driveTrainEncoder = driveEncoderRight;
         drivetrain.outputEncoders();
         telemetry.addData("STAGE:", stage);
@@ -75,7 +72,7 @@ public class AutonStages {
 
         }
         else if (stage == 30){
-            arm.setEncoderGoal(armEncoder - 70);
+
             stage = 40;
         }
 

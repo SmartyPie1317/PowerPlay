@@ -36,6 +36,14 @@ public class RobotMap {
     public static final double MAXIMUM_SERVO_POSITION = 1.0;
     public static final double SERVO_ANGLE_DEFAULT = SERVO_CLOSED;
 
+    //Wrist Parameters
+    public static final String WRIST_SERVO = "wrist_motor";
+    public static final double WRIST_SERVO_OPEN = 1.0;
+    public static final double WRIST_SERVO_CLOSED = 0.0;
+    public static final double MINIMUM_WRIST_POSITION = 0.0;
+    public static final double MAXIMUM_WRIST_POSITION = 1.0;
+    public static final double SERVO_WRIST_DEFAULT = WRIST_SERVO_CLOSED;
+
 
     // Arm Parameters
     public static final int FULL_HEIGHT = 2200;
