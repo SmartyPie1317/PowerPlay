@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.robot.Robot;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
@@ -14,6 +15,7 @@ public class Wrist {
     // Class variables
     Servo clawServo;
     Telemetry telemetry;
+    double currentAngle = RobotMap.WRIST_SERVO_OPEN;
 
     /**
      * Constructor for the drivetrain
@@ -45,11 +47,17 @@ public class Wrist {
         else{
             xReleased = true;
         }
-        double servoAngle = (clawOpen) ? RobotMap.WRIST_SERVO_OPEN : RobotMap.WRIST_SERVO_CLOSED;
+
+        double joystick = -gamepad.left_stick_y;
+        if(Math.abs (joystick) > RobotMap.DEADZONE){
+            currentAngle+= joystick * RobotMap.WRIST_RATE;
+        }
+        else if(gamepad.x){currentAngle = (clawOpen) ? RobotMap.WRIST_SERVO_OPEN : RobotMap.WRIST_SERVO_CLOSED;}
 
 
-        servoAngle = safetyCheck(servoAngle);
-        clawServo.setPosition(servoAngle);
+
+        currentAngle = safetyCheck(currentAngle);
+        clawServo.setPosition(currentAngle);
    }
 
     private double safetyCheck(double inp) {

@@ -43,6 +43,7 @@ public class RobotMap {
     public static final double MINIMUM_WRIST_POSITION = 0.0;
     public static final double MAXIMUM_WRIST_POSITION = 1.0;
     public static final double SERVO_WRIST_DEFAULT = WRIST_SERVO_CLOSED;
+    public static final double WRIST_RATE = 0.007;
 
 
     // Arm Parameters
