@@ -38,8 +38,8 @@ public class RobotMap {
 
     //Wrist Parameters
     public static final String WRIST_SERVO = "wrist_motor";
-    public static final double WRIST_SERVO_OPEN = 1.0;
-    public static final double WRIST_SERVO_CLOSED = 0.0;
+    public static final double WRIST_SERVO_OPEN = 0.9;
+    public static final double WRIST_SERVO_CLOSED = 0.1;
     public static final double MINIMUM_WRIST_POSITION = 0.0;
     public static final double MAXIMUM_WRIST_POSITION = 1.0;
     public static final double SERVO_WRIST_DEFAULT = WRIST_SERVO_CLOSED;
