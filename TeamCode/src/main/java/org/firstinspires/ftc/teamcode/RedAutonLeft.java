@@ -39,7 +39,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Team 14561
  */
 
-@Autonomous(name="RedAutonLeft", group="FreightFrenzy")
+@Autonomous(name="Left", group="FreightFrenzy")
 public class RedAutonLeft extends OpMode
 {
     private ElapsedTime runtime = new ElapsedTime();
